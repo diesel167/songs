@@ -44,6 +44,12 @@ table td{
     background-color: olivedrab;
 }
 
+.songsPerPage{
+    color: white;
+    background-color: #3c3c3c;
+    text-align: right;
+    padding-right: 20%;
+}
 .songsPerPage button{
     background: none;
     color: inherit;

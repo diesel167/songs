@@ -3,8 +3,8 @@ import React, {Component} from 'react';
 
 
 class Songs extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             songs: '',
             isAllSongsLoaded: false
@@ -26,15 +26,25 @@ class Songs extends Component {
         if(this.state.isAllSongsLoaded){
             for(let i = 0; i < this.props.songsPerPage; i++){
                 let row=<tr>
-                    <td>{this.state.songs[i].artist}</td>
-                    <td>{this.state.songs[i].title}</td>
-                    <td>{this.state.songs[i].year}</td>
+                    <td>{this.state.songs.slice(this.props.currentPage*this.props.songsPerPage-this.props.songsPerPage,this.props.currentPage*this.props.songsPerPage)[i].artist}</td>
+                    <td>{this.state.songs.slice(this.props.currentPage*this.props.songsPerPage-this.props.songsPerPage,this.props.currentPage*this.props.songsPerPage)[i].title}</td>
+                    <td>{this.state.songs.slice(this.props.currentPage*this.props.songsPerPage-this.props.songsPerPage,this.props.currentPage*this.props.songsPerPage)[i].year}</td>
                 </tr>;
                 temp.push(row);
             }
             return temp;
         }
     };
+
+    sortBySinger=()=>{
+        let sorted = {};
+        let unsorted = this.state.songs;
+        console.log(Object.keys(unsorted));
+        /*Object.keys(unsorted).sort().forEach(function(key) {
+            sorted[key] = unsorted[key];
+        });
+        this.setState({songs: sorted})*/
+    }
 
 
     render() {
@@ -43,7 +53,7 @@ class Songs extends Component {
                 <table>
                     <thead>
                         <tr>
-                            <th>Singer</th>
+                            <th onClick={this.sortBySinger}>Singer</th>
                             <th>Song</th>
                             <th>Year</th>
                         </tr>
