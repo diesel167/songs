@@ -4,3 +4,50 @@
     background-color: #bdc5cc;
     text-align: center;
 }
+
+.songs{
+    width: 80%;
+}
+
+.songs tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.songs tr{
+    text-align: left;
+    height: 30px;
+}
+.songs tr:hover {
+    background-color: #f5e4bc;
+    cursor: pointer;
+}
+.songs thead tr:hover {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.songs table{
+    border-collapse: collapse;
+    width: 100%;
+}
+.songs{
+    display: inline-block;
+}
+table td{
+    padding-left: 10px;
+}
+
+.filter{
+    display: inline-block;
+    float: right;
+    width: 20%;
+    height: 300px;
+    background-color: olivedrab;
+}
+
+.songsPerPage button{
+    background: none;
+    color: inherit;
+    border: none;
+    cursor: pointer;
+    outline: inherit;
+}
