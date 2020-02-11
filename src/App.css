@@ -44,16 +44,29 @@ table td{
     background-color: olivedrab;
 }
 
-.songsPerPage{
+.footer{
     color: white;
     background-color: #3c3c3c;
+    height: 30px;
+    text-align: left;
+}
+
+.songsPerPage{
+    float: right;
+    display: inline-block;
     text-align: right;
     padding-right: 20%;
 }
-.songsPerPage button{
+.btn{
     background: none;
     color: inherit;
     border: none;
     cursor: pointer;
     outline: inherit;
+}
+
+
+.pageNum{
+    display: inline-block;
+    font-size: .85rem;
 }

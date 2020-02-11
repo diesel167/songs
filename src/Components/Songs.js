@@ -17,6 +17,7 @@ class Songs extends Component {
             .then((a)=>{
                 this.setState({songs: a.songs});
                 this.setState({isAllSongsLoaded: true});
+                this.props.howManyPages(a.songs.length);
             });
     }
 
