@@ -45,7 +45,6 @@ class Songs extends Component {
     filteredSongs = (filtered) => {
         this.setState({songs: filtered})
     };
-
     sortBySinger = () => {
         let unsorted = this.state.songs;
         if(this.state.sorted === 'singerAsc'){
