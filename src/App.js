@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import './App.css';
 import Songs from './Components/Songs';
-import Filter from './Components/Filter';
+
 
 class App extends Component {
     constructor() {
@@ -91,7 +91,6 @@ class App extends Component {
                     songsPerPage = {this.state.songsPerPage}
                     currentPage = {this.state.currentPage}
                     howManyPages = {this.howManyPages}/>
-                <Filter/>
                 <div className="footer">
                     <div className="pageNum">
                         {this.generatePageNumButtons()}
@@ -105,7 +104,6 @@ class App extends Component {
                         <button className="btn" onClick={this.setSongsPerPage}>100</button>
                     </div>
                 </div>
-
           </div>
       );
     }

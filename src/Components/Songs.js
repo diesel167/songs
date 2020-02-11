@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
-
+import Filter from './Filter';
 
 
 class Songs extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            songs: '',
+            songs:'',
             isAllSongsLoaded: false,
-            sorted: ''
+            sorted:'',
+
         };
+        this.filteredSongs = this.filteredSongs.bind(this);
     }
 
     componentDidMount() {
@@ -22,10 +24,9 @@ class Songs extends Component {
             });
     }
 
-    rows=()=>{
+    rows = () => {
         //temp container for songs
         let temp = [];
-
         if(this.state.isAllSongsLoaded){
             let start = this.props.currentPage*this.props.songsPerPage-this.props.songsPerPage;
             let end = this.props.currentPage*this.props.songsPerPage > this.state.songs.length ? this.state.songs.length : this.props.currentPage*this.props.songsPerPage;
@@ -40,8 +41,12 @@ class Songs extends Component {
             return temp;
         }
     };
+    //change songs array
+    filteredSongs = (filtered) => {
+        this.setState({songs: filtered})
+    };
 
-    sortBySinger=()=>{
+    sortBySinger = () => {
         let unsorted = this.state.songs;
         if(this.state.sorted === 'singerAsc'){
             unsorted.reverse();
@@ -69,7 +74,7 @@ class Songs extends Component {
             })
         }
     };
-    sortBySong=()=>{
+    sortBySong = () => {
         let unsorted = this.state.songs;
         if(this.state.sorted === 'songAsc'){
             unsorted.reverse();
@@ -97,7 +102,7 @@ class Songs extends Component {
             })
         }
     };
-    sortByYear=()=>{
+    sortByYear = () => {
         let unsorted = this.state.songs;
         if(this.state.sorted === 'yearAsc'){
             unsorted.reverse();
@@ -126,6 +131,7 @@ class Songs extends Component {
         }
     };
 
+
     render() {
         return (
             <div className='songs'>
@@ -141,6 +147,9 @@ class Songs extends Component {
                         {this.rows()}
                     </tbody>
                 </table>
+                <Filter
+                    songsOrigin={this.state.songs}
+                    filteredSongs={this.filteredSongs}/>
             </div>
         );
     }
