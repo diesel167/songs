@@ -24,15 +24,19 @@ class Songs extends Component {
     rows=()=>{
         //temp container for songs
         let temp = [];
+
         if(this.state.isAllSongsLoaded){
-            for(let i = 0; i < this.props.songsPerPage; i++){
+            let start = this.props.currentPage*this.props.songsPerPage-this.props.songsPerPage;
+            let end = this.props.currentPage*this.props.songsPerPage > this.state.songs.length ? this.state.songs.length : this.props.currentPage*this.props.songsPerPage;
+            console.log(end);
+            [...this.state.songs].slice(start,end).map(song => {
                 let row=<tr>
-                    <td>{this.state.songs.slice(this.props.currentPage*this.props.songsPerPage-this.props.songsPerPage,this.props.currentPage*this.props.songsPerPage)[i].artist}</td>
-                    <td>{this.state.songs.slice(this.props.currentPage*this.props.songsPerPage-this.props.songsPerPage,this.props.currentPage*this.props.songsPerPage)[i].title}</td>
-                    <td>{this.state.songs.slice(this.props.currentPage*this.props.songsPerPage-this.props.songsPerPage,this.props.currentPage*this.props.songsPerPage)[i].year}</td>
+                    <td>{song.artist}</td>
+                    <td>{song.title}</td>
+                    <td>{song.year}</td>
                 </tr>;
                 temp.push(row);
-            }
+            });
             return temp;
         }
     };

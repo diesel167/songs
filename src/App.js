@@ -12,7 +12,8 @@ class App extends Component {
             lastSongsPerPageToggled: '',  //last clicked button with songs per page counter
             currentPage: 1,
             lastCurrentPageToggled: '',
-            allPagesCount: 1
+            allPagesCount: 1,
+            songsCount: 0
         };
         this.howManyPages = this.howManyPages.bind(this);
     }
@@ -27,8 +28,11 @@ class App extends Component {
 
     //get count from Songs component and calculate amount of pages
     howManyPages = (count) => {
-        let howMany = Math.floor(count / this.state.songsPerPage);
-        this.setState({allPagesCount: howMany})
+        let howMany = Math.ceil(count / this.state.songsPerPage);
+        this.setState({
+            allPagesCount: howMany,
+            songsCount: count
+        })
     };
 
     //click handler for songs per page buttons
@@ -39,7 +43,9 @@ class App extends Component {
         changeEvent.target.style.color = 'red';
         this.setState({
             lastSongsPerPageToggled: changeEvent.target,
-            songsPerPage: changeEvent.target.innerHTML
+            songsPerPage: changeEvent.target.innerHTML,
+            currentPage: 1,
+            allPagesCount: Math.ceil(this.state.songsCount / changeEvent.target.innerHTML)
         });
     };
 
@@ -48,7 +54,6 @@ class App extends Component {
             currentPage: changeEvent.target.innerHTML,
             lastCurrentPageToggled: changeEvent.target,
         });
-        console.log('clicked at = ' + changeEvent.target.innerHTML);
     };
 
     generatePageNumButtons = () => {
@@ -67,7 +72,10 @@ class App extends Component {
             i = this.state.allPagesCount-4;
         }
         for(let j = i; j <= i+4; j++){
-            let temp = <button className="btn" onClick={this.setPageNum}>{j}</button>;
+            let temp ='';
+            if(j<=this.state.allPagesCount){
+                temp = <button className="btn" onClick={this.setPageNum}>{j}</button>;
+            }
             if(j == this.state.currentPage){
                 temp = <button className="btn" style={{color:'red'}} onClick={this.setPageNum}>{j}</button>;
             }
