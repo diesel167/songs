@@ -74,10 +74,10 @@ class App extends Component {
         for(let j = i; j <= i+4; j++){
             let temp ='';
             if(j<=this.state.allPagesCount){
-                temp = <button className="btn" onClick={this.setPageNum}>{j}</button>;
+                temp = <button key={this.state.allPagesCount*j}className="btn" onClick={this.setPageNum}>{j}</button>;
             }
             if(j == this.state.currentPage){
-                temp = <button className="btn" style={{color:'red'}} onClick={this.setPageNum}>{j}</button>;
+                temp = <button key={this.state.allPagesCount*j} className="btn" style={{color:'red'}} onClick={this.setPageNum}>{j}</button>;
             }
             buttonsNum.push(temp);
         }

@@ -30,11 +30,11 @@ class Songs extends Component {
         if(this.state.isAllSongsLoaded){
             let start = this.props.currentPage*this.props.songsPerPage-this.props.songsPerPage;
             let end = this.props.currentPage*this.props.songsPerPage > this.state.songs.length ? this.state.songs.length : this.props.currentPage*this.props.songsPerPage;
-            this.state.songs.slice(start,end).map(song => {
-                let row=<tr>
-                    <td>{song.artist}</td>
-                    <td>{song.title}</td>
-                    <td>{song.year}</td>
+            this.state.songs.slice(start,end).map((song, i) => {
+                let row=<tr key={start*end*i+i}>
+                    <td key={start*end*i+2}>{song.artist}</td>
+                    <td key={start*end*i+3}>{song.title}</td>
+                    <td key={start*end*i+4}>{song.year}</td>
                 </tr>;
                 temp.push(row);
             });
@@ -43,7 +43,8 @@ class Songs extends Component {
     };
     //change songs array
     filteredSongs = (filtered) => {
-        this.setState({songs: filtered})
+        this.setState({songs: filtered});
+        this.props.howManyPages(filtered.length);
     };
     sortBySinger = () => {
         let unsorted = this.state.songs;

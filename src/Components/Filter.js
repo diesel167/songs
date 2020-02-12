@@ -61,9 +61,9 @@ class Filter extends Component {
                 return 0;
             });
             let listNames = [];
-            listNames.push(<option value='_All_'>All</option>);
-            uniqueNames.map(name => {
-                listNames.push(<option value={name}>{name}</option>)
+            listNames.push(<option key={100000} value='_All_'>All</option>);
+            uniqueNames.map((name, i) => {
+                listNames.push(<option key={i*uniqueNames.length} value={name}>{name}</option>)
             });
             return <>Singer:<select onChange={this.handleFilterName} size="1">{listNames}</select></>;
         }
@@ -103,9 +103,9 @@ class Filter extends Component {
           return 0;
         });
         let listYears = [];
-        listYears.push(<option value='_All_'>All</option>);
-        uniqueYears.map(year => {
-          listYears.push(<option value={year}>{year}</option>)
+        listYears.push(<option key={100001} value='_All_'>All</option>);
+        uniqueYears.map((year, i) => {
+          listYears.push(<option key={i*uniqueYears.length} value={year}>{year}</option>)
         });
         return <>Year:<select onChange={this.handleFilterYear} size="1">{listYears}</select></>;
       }
