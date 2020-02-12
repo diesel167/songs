@@ -8,8 +8,7 @@ class Songs extends Component {
         this.state = {
             songs:'',
             isAllSongsLoaded: false,
-            sorted:'',
-
+            sorted:''
         };
         this.filteredSongs = this.filteredSongs.bind(this);
     }
@@ -67,7 +66,7 @@ class Songs extends Component {
                 if(a.artist < b.artist) { return -1; }
                 if(a.artist > b.artist) { return 1; }
                 return 0;
-            })
+            });
             this.setState({
                 songs: unsorted,
                 sorted: 'singerAsc'
@@ -95,7 +94,7 @@ class Songs extends Component {
                 if(a.title < b.title) { return -1; }
                 if(a.title > b.title) { return 1; }
                 return 0;
-            })
+            });
             this.setState({
                 songs: unsorted,
                 sorted: 'songAsc'
@@ -123,14 +122,13 @@ class Songs extends Component {
                 if(a.year < b.year) { return -1; }
                 if(a.year > b.year) { return 1; }
                 return 0;
-            })
+            });
             this.setState({
                 songs: unsorted,
                 sorted: 'yearAsc'
             })
         }
     };
-
 
     render() {
         return (

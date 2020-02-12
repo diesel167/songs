@@ -42,7 +42,6 @@ class Filter extends Component {
         else{
             this.props.filteredSongs(tempArr.filter(song => song.artist === e.target.value));
         }
-
     };
 
     generateUniqueNames = () => {

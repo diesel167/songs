@@ -4,7 +4,6 @@
     background-color: #bdc5cc;
     text-align: center;
 }
-
 .songs{
     width: 100%;
     min-height: 130px;
@@ -14,8 +13,6 @@
     text-align: left;
 
 }
-
-
 .songs tr:nth-child(even) {
     background-color: #f2f2f2;
 }
@@ -46,16 +43,12 @@ table td{
     width: 33%;
     padding-left: 10px;
 }
-
-
-
 .footer{
     color: white;
     background-color: #3c3c3c;
     height: 30px;
     text-align: left;
 }
-
 .songsPerPage{
     float: right;
     display: inline-block;
@@ -76,13 +69,13 @@ table td{
 .filter{
     display: inline-block;
     position: absolute;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
     top: 0;
     right: 0;
     width: 20%;
     height: calc(100% + 4px);
-    background-color: rgba(142, 138, 85, 0.62);
+    background-color: rgba(202, 198, 123, 0.44);
     color: white;
 }
 .filter select{
@@ -93,46 +86,19 @@ table td{
     line-height: 30px;
     background: #2c3e50;
     overflow: hidden;
-    border-radius: .25em;
 }
-
-
 /* Reset Select */
 select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    appearance: none;
+    margin-top: 5px;
     outline: 0;
     box-shadow: none;
     border: 0 !important;
     background-color: #2c3e50;
+    padding: .5em;
+    color: #fff;
+    cursor: pointer;
 }
 /* Remove IE arrow */
 select::-ms-expand {
     display: none;
-}
-
-select {
-    padding: 0 .5em;
-    color: #fff;
-    cursor: pointer;
-}
-/* Arrow */
-.select::after {
-    content: '\25BC';
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0 1em;
-    background: #34495e;
-    cursor: pointer;
-    pointer-events: none;
-    -webkit-transition: .25s all ease;
-    -o-transition: .25s all ease;
-    transition: .25s all ease;
-}
-/* Transition */
-.select:hover::after {
-    color: #f39c12;
 }
