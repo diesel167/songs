@@ -38,9 +38,12 @@ class App extends Component {
     //click handler for songs per page buttons
     setSongsPerPage = (changeEvent) => {
         if(this.state.lastSongsPerPageToggled){
-            this.state.lastSongsPerPageToggled.style.color = 'white';
+            //change color
+            let changeColor = this.state.lastSongsPerPageToggled;
+            changeColor.style.color = 'white';
+            this.setState({lastSongsPerPageToggled: changeColor});
         }
-        changeEvent.target.style.color = 'red';
+        changeEvent.target.style.color = 'rgba(179, 221, 237, 0.53)';
         this.setState({
             lastSongsPerPageToggled: changeEvent.target,
             songsPerPage: changeEvent.target.innerHTML,
@@ -74,10 +77,10 @@ class App extends Component {
         for(let j = i; j <= i+4; j++){
             let temp ='';
             if(j<=this.state.allPagesCount){
-                temp = <button key={this.state.allPagesCount*j}className="btn" onClick={this.setPageNum}>{j}</button>;
+                temp = <button key={this.state.allPagesCount*j} className="btn" onClick={this.setPageNum}>{j}</button>;
             }
-            if(j == this.state.currentPage){
-                temp = <button key={this.state.allPagesCount*j} className="btn" style={{color:'red'}} onClick={this.setPageNum}>{j}</button>;
+            if(+j === +this.state.currentPage){
+                temp = <button key={this.state.allPagesCount*j} className="btn" style={{color: 'rgba(179, 221, 237, 0.53)'}} onClick={this.setPageNum}>{j}</button>;
             }
             buttonsNum.push(temp);
         }
@@ -98,7 +101,7 @@ class App extends Component {
                     </div>
                     <div className="songsPerPage">
                         <button className="btn" onClick={this.setSongsPerPage}>5</button>
-                        <button className="btn" ref={this.init} style={{color: 'red'}} onClick={this.setSongsPerPage}>10</button>
+                        <button className="btn" ref={this.init} style={{color: 'rgba(179, 221, 237, 0.53)'}} onClick={this.setSongsPerPage}>10</button>
                         <button className="btn" onClick={this.setSongsPerPage}>25</button>
                         <button className="btn" onClick={this.setSongsPerPage}>50</button>
                         <button className="btn" onClick={this.setSongsPerPage}>100</button>

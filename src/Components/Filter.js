@@ -31,7 +31,7 @@ class Filter extends Component {
         let tempArr = this.state.songsOrigin;
         //if double filtering
         if(this.state.filterByYear && this.state.filterByYear!=='_All_'){
-          tempArr = tempArr.filter(song => song.year === this.state.filterByYear);
+            tempArr = tempArr.filter(song => song.year === this.state.filterByYear);
         }
         //send to Songs filtered by artist name songs array
         //if 'All' filtered
@@ -52,6 +52,7 @@ class Filter extends Component {
                 if(uniqueNames.indexOf(song.artist)<0){
                     uniqueNames.push(song.artist);
                 }
+                return 0;
             });
             //sort it by asc
             uniqueNames.sort(function(a, b){
@@ -62,7 +63,8 @@ class Filter extends Component {
             let listNames = [];
             listNames.push(<option key={100000} value='_All_'>All</option>);
             uniqueNames.map((name, i) => {
-                listNames.push(<option key={i*uniqueNames.length} value={name}>{name}</option>)
+                listNames.push(<option key={i*uniqueNames.length} value={name}>{name}</option>);
+                return 0;
             });
             return <>Singer:<select onChange={this.handleFilterName} size="1">{listNames}</select></>;
         }
@@ -82,32 +84,34 @@ class Filter extends Component {
         }
         //if filtered not All
         else{
-          this.props.filteredSongs(tempArr.filter(song => song.year === e.target.value));
+            this.props.filteredSongs(tempArr.filter(song => song.year === e.target.value));
         }
     };
 
     generateUniqueYears = () => {
-      if(this.state.songsOrigin){
-        let notUniqueSongs = this.state.songsOrigin;
-        let uniqueYears = [];
-        notUniqueSongs.map(song => {
-          if(uniqueYears.indexOf(song.year)<0){
-            uniqueYears.push(song.year);
-          }
-        });
-        //sort it by asc
-        uniqueYears.sort(function(a, b){
-          if(a < b) { return -1; }
-          if(a > b) { return 1; }
-          return 0;
-        });
-        let listYears = [];
-        listYears.push(<option key={100001} value='_All_'>All</option>);
-        uniqueYears.map((year, i) => {
-          listYears.push(<option key={i*uniqueYears.length} value={year}>{year}</option>)
-        });
-        return <>Year:<select onChange={this.handleFilterYear} size="1">{listYears}</select></>;
-      }
+        if(this.state.songsOrigin){
+            let notUniqueSongs = this.state.songsOrigin;
+            let uniqueYears = [];
+            notUniqueSongs.map(song => {
+                if(uniqueYears.indexOf(song.year)<0){
+                  uniqueYears.push(song.year);
+                }
+                return 0;
+            });
+            //sort it by asc
+            uniqueYears.sort(function(a, b){
+                if(a < b) { return -1; }
+                if(a > b) { return 1; }
+                return 0;
+            });
+            let listYears = [];
+            listYears.push(<option key={100001} value='_All_'>All</option>);
+            uniqueYears.map((year, i) => {
+                listYears.push(<option key={i*uniqueYears.length} value={year}>{year}</option>);
+                return 0;
+            });
+            return <>Year:<select onChange={this.handleFilterYear} size="1">{listYears}</select></>;
+        }
     };
 
     render() {

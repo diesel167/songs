@@ -1,8 +1,10 @@
 .App{
     width: 80%;
     margin: auto;
-    background-color: #bdc5cc;
+    background-color: rgba(122, 187, 237, 0.55);
     text-align: center;
+    color:white;
+    -webkit-tap-highlight-color: transparent;
 }
 .songs{
     width: 100%;
@@ -11,14 +13,13 @@
     position: relative;
     margin: 0;
     text-align: left;
-
 }
 .songs tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: rgba(122, 187, 237, 0.53);
 }
 .songs tr{
     text-align: left;
-    height: 30px;
+    height: 60px;
 }
 .songs tr:hover {
     background-color: #f5e4bc;
@@ -29,31 +30,37 @@
     cursor: pointer;
 }
 .songs table{
+    position: relative;
     border-collapse: collapse;
     width: 80%;
     border-spacing: 0;
-    margin-bottom: -4px;
+    display: inline-table;
+    vertical-align: top;
 }
 .songs table th{
-    background-color: rgba(0, 0, 0, 0.53);
+    background-color: rgba(107, 154, 200, 0.72);
     color: white;
     padding-left: 10px;
 }
 table td{
     width: 33%;
     padding-left: 10px;
+    font-size: 20px;
 }
 .footer{
     color: white;
-    background-color: #3c3c3c;
-    height: 30px;
+    height: 50px;
+    line-height: 50px;
+    padding: 5px;
     text-align: left;
+    border-top: 1px solid white;
+    background-color: rgba(107, 154, 200, 0.72);
 }
 .songsPerPage{
     float: right;
     display: inline-block;
     text-align: right;
-    padding-right: 20%;
+    padding-left: 50px;
 }
 .btn{
     background: none;
@@ -61,31 +68,31 @@ table td{
     border: none;
     cursor: pointer;
     outline: inherit;
+    font-size: 20px;
 }
 .pageNum{
     display: inline-block;
-    font-size: .85rem;
+    font-size: 20px;
 }
 .filter{
     display: inline-block;
-    position: absolute;
     padding: 10px;
     box-sizing: border-box;
     top: 0;
     right: 0;
     width: 20%;
     height: calc(100% + 4px);
-    background-color: rgba(202, 198, 123, 0.44);
     color: white;
 }
 .filter select{
-    width: 100px;
+    width: 100%;
     display: block;
     position: relative;
-    height: 30px;
-    line-height: 30px;
-    background: #2c3e50;
+    height: 60px;
+    line-height: 60px;
+    background: rgba(122, 187, 237, 0.53);
     overflow: hidden;
+    font-size: 20px;
 }
 /* Reset Select */
 select {
@@ -94,11 +101,29 @@ select {
     box-shadow: none;
     border: 0 !important;
     background-color: #2c3e50;
-    padding: .5em;
+    padding: 2px;
     color: #fff;
     cursor: pointer;
 }
 /* Remove IE arrow */
 select::-ms-expand {
     display: none;
+}
+
+@media screen and (max-width: 568px) {
+    .App{
+        width: 100%;
+    }
+    .filter{
+        display: block;
+        width: 60%;
+    }
+    table{
+        width: 100% !important;
+    }
+    .footer{
+        height: 100px;
+        text-align: left;
+    }
+
 }
