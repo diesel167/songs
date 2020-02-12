@@ -14,7 +14,7 @@ class Songs extends Component {
     }
 
     componentDidMount() {
-        fetch('https://api.myjson.com/bins/sml9c')
+        fetch('https://davidpots.com/jakeworry/017%20JSON%20Grouping,%20part%203/data.json')
             .then(response => response.json())
             .then((a)=>{
                 this.setState({songs: [...a.songs]});
@@ -36,6 +36,7 @@ class Songs extends Component {
                     <td key={start*end*i+4}>{song.year}</td>
                 </tr>;
                 temp.push(row);
+                return 0;
             });
             return temp;
         }

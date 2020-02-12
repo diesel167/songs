@@ -38,7 +38,10 @@ class App extends Component {
     //click handler for songs per page buttons
     setSongsPerPage = (changeEvent) => {
         if(this.state.lastSongsPerPageToggled){
-            this.state.lastSongsPerPageToggled.style.color = 'white';
+            //change color
+            let changeColor = this.state.lastSongsPerPageToggled;
+            changeColor.style.color = 'white';
+            this.setState({lastSongsPerPageToggled: changeColor});
         }
         changeEvent.target.style.color = 'red';
         this.setState({
@@ -76,7 +79,7 @@ class App extends Component {
             if(j<=this.state.allPagesCount){
                 temp = <button key={this.state.allPagesCount*j}className="btn" onClick={this.setPageNum}>{j}</button>;
             }
-            if(j == this.state.currentPage){
+            if(+j === +this.state.currentPage){
                 temp = <button key={this.state.allPagesCount*j} className="btn" style={{color:'red'}} onClick={this.setPageNum}>{j}</button>;
             }
             buttonsNum.push(temp);
